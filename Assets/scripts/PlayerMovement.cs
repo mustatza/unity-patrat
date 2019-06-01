@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour {
 
     }
     public void OnLanding() {
-        //Debug.Log("Jump landing");
+        Debug.Log("Jump landing");
         //animator.SetBool("jumping", false);
     }
 
