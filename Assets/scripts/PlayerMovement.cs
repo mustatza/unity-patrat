@@ -55,6 +55,9 @@ public class PlayerMovement : MonoBehaviour {
     {
         Debug.Log("Jump collision");
         animator.SetBool("jumping", false);
+        if (collision.collider.tag == "Enemy") {
+            Debug.Log("Mort");
+        }
         canJump = true;
         canJump1 = true;
     }
