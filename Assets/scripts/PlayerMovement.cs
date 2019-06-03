@@ -53,12 +53,15 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Jump collision");
-        animator.SetBool("jumping", false);
+
         if (collision.collider.tag == "Enemy") {
             Debug.Log("Mort");
         }
-        canJump = true;
-        canJump1 = true;
+
+        if(collision.collider.tag == "Ground") {
+            animator.SetBool("jumping", false);
+            canJump = true;
+            canJump1 = true;
+        }
     }
 }
