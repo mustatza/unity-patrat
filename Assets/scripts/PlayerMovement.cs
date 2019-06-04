@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
 
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour {
     bool canJump1 = true;
     int vieti = 3;
     public Animator animator;
+    public Text livesText;
 
     // Use this for initialization
     void Start () {
@@ -58,6 +60,7 @@ public class PlayerMovement : MonoBehaviour {
         if (collision.collider.tag == "Enemy") {
             vieti--;
             Debug.Log("Mort:" + vieti);
+            livesText.text = vieti.ToString();
         } 
 
         if(collision.collider.tag == "Ground") {
