@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour {
     bool jump = false;
     bool canJump = true;
     bool canJump1 = true;
+    int vieti = 3;
     public Animator animator;
 
     // Use this for initialization
@@ -55,8 +56,9 @@ public class PlayerMovement : MonoBehaviour {
     {
 
         if (collision.collider.tag == "Enemy") {
-            Debug.Log("Mort");
-        }
+            vieti--;
+            Debug.Log("Mort:" + vieti);
+        } 
 
         if(collision.collider.tag == "Ground") {
             animator.SetBool("jumping", false);
