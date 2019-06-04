@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour {
         if (collision.collider.tag == "Enemy") {
             vieti--;
             Debug.Log("Mort:" + vieti);
-            livesText.text = vieti.ToString();
+            livesText.text = "vieti: " + vieti.ToString();
         } 
 
         if(collision.collider.tag == "Ground") {
