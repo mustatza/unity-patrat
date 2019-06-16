@@ -12,22 +12,36 @@ public class PlayerMovement : MonoBehaviour {
     bool canJump = true;
     bool canJump1 = true;
     int vieti = 3;
+    int timpViata = 0;
     public Animator animator;
     public Text livesText;
+    public Button resetGame;
+
 
     // Use this for initialization
     void Start () {
-		
-	}
-	
+        // Time.timeScale = 1;
+        resetGame.gameObject.SetActive(false);
+        resetGame.interactable = true;
+    }
+
+    public void decreaseTimeRemaining() {
+        Debug.Log("invincibil: " + timpViata);
+        timpViata--;
+    }	
+
 	// Update is called once per frame
 	void Update () {
+        if (timpViata <= 0) {
+            CancelInvoke("decreaseTimeRemaining");
+        }
+
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
         animator.SetFloat("speed",Mathf.Abs(horizontalMove));
 
         if (Input.GetButtonDown("Jump") && canJump) {
-            Debug.Log("Jump1");
+            
             jump = true;
             animator.SetBool("jumping",true);
             canJump = false;
@@ -36,7 +50,6 @@ public class PlayerMovement : MonoBehaviour {
         if (canJump==false) {
             if (Input.GetButtonDown("Jump") && canJump1)
             {
-                Debug.Log("Jump2");
                 animator.SetBool("jumping", true);
                 jump = true;
                 canJump1 = false;
@@ -44,23 +57,34 @@ public class PlayerMovement : MonoBehaviour {
         }
 
     }
-    public void OnLanding() {
-        Debug.Log("Jump landing");
-        //animator.SetBool("jumping", false);
-    }
 
     void FixedUpdate() {
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
     }
 
+    public void restart() {
+        Time.timeScale = 1;
+        resetGame.gameObject.SetActive(false);
+        Camera.main.GetComponent<AudioSource>().Play();
+        vieti = 3;
+        livesText.text = "vieti: " + vieti.ToString();
+        this.transform.position = new Vector3(16.33f, -15.38f,0);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if (collision.collider.tag == "Enemy") {
+        if (collision.collider.tag == "Enemy" && timpViata <= 0) {
             vieti--;
-            Debug.Log("Mort:" + vieti);
+            if (vieti == 0) {
+                Time.timeScale = 0;
+                Camera.main.GetComponent<AudioSource>().Stop();
+                resetGame.gameObject.SetActive(true); 
+            }
             livesText.text = "vieti: " + vieti.ToString();
+            timpViata = 4;
+            InvokeRepeating("decreaseTimeRemaining", 1, 1);
         } 
 
         if(collision.collider.tag == "Ground") {
