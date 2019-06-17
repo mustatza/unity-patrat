@@ -943,8 +943,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 785610513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.33, y: -15.38, z: 0}
-  m_LocalScale: {x: 7.16, y: 7.16, z: 7.16}
+  m_LocalPosition: {x: 13.899, y: -13.023, z: 0}
+  m_LocalScale: {x: 21.89528, y: 21.89528, z: 21.89528}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1014,7 +1014,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24560760c7ccfd94bbb0bae7e89df675, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 2000
+  m_JumpForce: 3000
   m_CrouchSpeed: 0.334
   m_MovementSmoothing: 0.2229
   m_AirControl: 0
@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 785610518}
   horizontalMove: 0
-  runSpeed: 650
+  runSpeed: 700
   animator: {fileID: 785610520}
   livesText: {fileID: 143956310}
   resetGame: {fileID: 1891829733}
@@ -1633,7 +1633,7 @@ GameObject:
   - component: {fileID: 1593901825}
   m_Layer: 0
   m_Name: Podea (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
