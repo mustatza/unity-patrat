@@ -55,6 +55,11 @@ public class PlayerMovement : MonoBehaviour {
                 canJump1 = false;
             }
         }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            animator.SetBool("atack", true);
+        }
+        else { animator.SetBool("atack", false); }
 
     }
 
