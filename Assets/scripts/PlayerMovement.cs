@@ -59,7 +59,15 @@ public class PlayerMovement : MonoBehaviour {
         {
             animator.SetBool("atack", true);
         }
-        else { animator.SetBool("atack", false); }
+        //else { animator.SetBool("atack", false); }
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("Player_atack"))
+        {
+            Debug.Log(this.animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
+            int times = (int)this.animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            if(times >= 1) {
+                animator.SetBool("atack", false);
+            }
+        }
 
     }
 
